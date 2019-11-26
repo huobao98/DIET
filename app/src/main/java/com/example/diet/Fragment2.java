@@ -8,50 +8,46 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import static android.R.attr.button;
+import java.util.ArrayList;
+import java.util.List;
+
+
 
 
 public class Fragment2 extends Fragment {
 
-    //Tab标题
-    private String[] title=new String[]{"营养百度","健康商城","优选食谱"};
     private ViewPager viewPager;
     private TabLayout tabLayout;
-    private TabLayout.Tab tabAtOne;
-    private TabLayout.Tab tabAttwo;
-    private TabLayout.Tab tabAtthree;
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view=inflater.inflate(R.layout.explore_page,container,false);
+        View view = inflater.inflate(R.layout.explore_page, container, false);
         return view;
+
     }
+
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
+        tabLayout = (TabLayout) getActivity().findViewById(R.id.tab_layout);
+        viewPager = (ViewPager) getActivity().findViewById(R.id.view_pager);
+        initToolBar();
     }
 
-    /*private void initView(){
-        viewPager=(ViewPager)viewPager.findViewById(R.id.view_pager);
-        tabLayout=(TabLayout)tabLayout.findViewById(R.id.tab_layout);
-        //使用适配器将ViewPager与Fragment绑定在一起
-        //viewPager.setAdapter(new MyFragmentPagerAdapter(getSupportFragmentManager()));
-        //将TabLayout与ViewPager绑定
-        tabLayout.setupWithViewPager(viewPager);
+    private void initToolBar(){
+        List<String> tabTitle=new ArrayList<>();
+        tabTitle.add("营养百科");
+        tabTitle.add("健康商城");
+        tabTitle.add("优选食谱");
 
-        //获取单个Tab
-        tabAtOne=tabLayout.getTabAt(0);
-        tabAttwo=tabLayout.getTabAt(1);
-        tabAtthree=tabLayout.getTabAt(2);
-        //设置Tab文字
-        tabAtOne.setText(title[0]);
-        tabAttwo.setText(title[1]);
-        tabAtthree.setText(title[2]);
-    }*/
+        List<Fragment> list_fragment = new ArrayList<>();
+        list_fragment.add(new EX_nutritionFragment());
+        list_fragment.add(new EX_mallFragment());
+        list_fragment.add(new EX_reciptFragment());
+
+        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(this.getChildFragmentManager(), list_fragment, tabTitle);
+        viewPager.setAdapter(viewPagerAdapter);
+        tabLayout.setupWithViewPager(viewPager);//将tablayout与viewpager关联起来
+    }
 }

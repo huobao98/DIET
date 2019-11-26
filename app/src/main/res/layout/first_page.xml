@@ -20,13 +20,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="250dp"
                     android:layout_gravity="center_horizontal">
+
                     <ImageView
                         android:id="@+id/iv_show"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:background="@drawable/background3"
                         android:contentDescription="@string/app_name"
-                        android:scaleType="centerCrop"
-                        android:background="@drawable/background3" />
+                        android:scaleType="centerCrop" />
                 </LinearLayout>
 
                 <com.example.diet.BallView
@@ -34,8 +35,8 @@
                     android:layout_width="150dp"
                     android:layout_height="150dp"
                     android:layout_gravity="center"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginBottom="10dp"/>
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="15dp" />
 
                 <HorizontalScrollView
                     android:layout_width="wrap_content"
@@ -208,9 +209,9 @@
                     android:layout_width="372dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:layout_marginBottom="5dp"
                     android:layout_marginTop="5dp"
                     android:background="@drawable/frame"
-                    android:layout_marginBottom="5dp"
                     android:orientation="vertical">
 
                     <LinearLayout
@@ -259,24 +260,11 @@
                             android:textColor="@drawable/text1" />
                     </LinearLayout>
 
-                    <LinearLayout
+                    <TextView
+                        android:id="@+id/edit_meal"
+                        android:layout_marginTop="15dp"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-                        <ImageButton
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:src="@drawable/add"
-                            android:scaleType="centerInside"
-                            android:background="@drawable/btn_back"
-                            android:layout_marginTop="15dp"
-                            android:layout_weight="1"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="7"/>
-                    </LinearLayout>
-
+                        android:layout_height="wrap_content" />
                 </LinearLayout>
 
             </LinearLayout>
